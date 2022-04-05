@@ -76,7 +76,7 @@ class DogsAppsTests: XCTestCase {
     }
     
     func testCollectionViewHasProperItems(){
-        let cell = viewControllerUnderTest.collectionView(viewControllerUnderTest.collectionView ?? UICollectionView(), cellForItemAt: IndexPath(row: 0, section: 0)) as? DogCollectionViewCell
+        let cell = viewControllerUnderTest.collectionView(viewControllerUnderTest.collectionView ?? UICollectionView(), cellForItemAt: IndexPath(row: 1, section: 0)) as? DogCollectionViewCell
         
         XCTAssertEqual(cell?.breedLabel.text, "Akita")
     }
