@@ -171,7 +171,6 @@
 			children = (
 				C2D2484127F3C15B00E65C33 /* DogsCollectionViewController.swift */,
 				C29B674527F4E8EE00802D13 /* CollectionViewCell */,
-				C29B674727F4E91C00802D13 /* TableView */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -197,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				C29B674627F4E90D00802D13 /* CollectionView */,
+				C29B674727F4E91C00802D13 /* TableView */,
 			);
 			path = Views;
 			sourceTree = "<group>";

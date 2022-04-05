@@ -12,27 +12,22 @@ class DogCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var breedLabel: UILabel!
     
-    var cellViewModel: DogCellViewModel? {
-        didSet{
-          updateLabel()
-        }
-    }
-
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
-
-   func updateLabel(){
-        breedLabel.text = cellViewModel?.name
-        imgView.kf.setImage(with: URL(string: cellViewModel!.url))
+    
+    func updateLabel(cellViewModel: DogCellViewModel){
+        breedLabel.text = cellViewModel.name
+        imgView.kf.setImage(with: URL(string: cellViewModel.url))
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         breedLabel.text = nil
         imgView.image = nil
     }
-
+    
 }
 

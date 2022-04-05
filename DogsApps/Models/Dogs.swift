@@ -17,11 +17,11 @@ struct Dog: Codable {
     let image: Image
     let bredFor: String?
     let lifeSpan: String
-    let temperament, origin: String?
+    let temperament: String?
     
     
     enum CodingKeys: String, CodingKey {
-            case id, name, image,temperament,origin
+            case id, name, image,temperament
             case bredFor = "bred_for"
             case lifeSpan = "life_span"
     }

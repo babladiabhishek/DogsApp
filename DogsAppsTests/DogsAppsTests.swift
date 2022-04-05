@@ -41,10 +41,11 @@ class DogsAppsTests: XCTestCase {
         super.setUp()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.viewControllerUnderTest =   storyboard.instantiateViewController(identifier: "DogsCollectionViewController") as? DogsCollectionViewController
+        viewControllerUnderTest.viewModel = DogsListViewModel(dogService: MockService())
         viewControllerUnderTest.viewDidLoad()
         viewControllerUnderTest.loadView()
-        viewControllerUnderTest.initViewModel()
-        viewControllerUnderTest.initView()
+        viewControllerUnderTest.setupView()
+        viewControllerUnderTest.initDogListViewModel()
     }
     
     func testHasCollectionView(){
@@ -68,10 +69,29 @@ class DogsAppsTests: XCTestCase {
     }
     
     func testCollectionViewCellHasReuseIdentifier() {
-        let cell = viewControllerUnderTest.collectionView(viewControllerUnderTest.collectionView.unsafelyUnwrapped, cellForItemAt: IndexPath(row: 0, section: 1)) as? DogCollectionViewCell
+        let cell = viewControllerUnderTest.collectionView(viewControllerUnderTest.collectionView.unsafelyUnwrapped, cellForItemAt: IndexPath(row: 0, section: 0)) as? DogCollectionViewCell
         let actualReuseIdentifier = cell?.reuseIdentifier
         let expectedIdentifier = "cell"
         XCTAssertEqual(actualReuseIdentifier, expectedIdentifier)
     }
+    
+    func testCollectionViewHasProperItems(){
+        let cell = viewControllerUnderTest.collectionView(viewControllerUnderTest.collectionView ?? UICollectionView(), cellForItemAt: IndexPath(row: 0, section: 0)) as? DogCollectionViewCell
+        
+        XCTAssertEqual(cell?.breedLabel.text, "Akita")
+    }
+    
+}
+
+class MockService:AsyncAwaitDogsService{
+    var dogs:Dogs!
+    func fetchDogsBreed() async throws -> Dogs? {
+     let valueOne =  Dog(id: 1, name: "Afghan Hound", image: Image(url: "sample1"), bredFor: nil, lifeSpan: "10 - 14 years", temperament: nil)
+        let valueTwo =  Dog(id: 2, name: "Akita", image: Image(url: "sample1"), bredFor: "Coursing and hunting", lifeSpan: "9 - 14 years", temperament: nil)
+        dogs.append(valueOne)
+        dogs.append(valueTwo)
+        return dogs
+    }
+    
     
 }

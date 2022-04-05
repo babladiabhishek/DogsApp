@@ -13,31 +13,25 @@ protocol AsyncAwaitDogsService{
 }
 
 class WebService:AsyncAwaitDogsService {
-    var dogss:Dogs? = nil
     func fetchDogsBreed() async throws -> Dogs? {
         guard let urlString = URL(string: Constants.Urls.dogsBreedUrl) else { return [] }
         if #available(iOS 15.0, *) {
-            let (data,response) =  try await URLSession.shared.data(from: urlString)
-            print(response)
-            let dogs = try? JSONDecoder().decode(Dogs.self, from: data)
-            print(dogs!)
+            let (data,_) =  try await URLSession.shared.data(from: urlString)
+            guard let dogs = try? JSONDecoder().decode(Dogs.self, from: data) else {return []}
             return dogs
         } else {
             // Fallback on earlier versions
             AF.request(urlString).responseJSON  { response in
-                print(response.value!)
                 switch response.result {
                 case .success(let value):
-                    print(response.value!)
-                    self.dogss = try? JSONDecoder().decode(Dogs.self, from: value as! Data)
-                    print(self.dogss ?? [])
+                    _ = try? JSONDecoder().decode(Dogs.self, from: value as! Data)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
             }
-            return self.dogss
+            
         }
-       
+        
     }
     
 }

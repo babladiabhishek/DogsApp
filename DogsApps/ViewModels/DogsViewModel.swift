@@ -1,7 +1,5 @@
 //
 //  DogsViewModel.swift
-//
-//
 //  Created by Abhishek babladi on 2022-03-29.
 //
 
@@ -11,16 +9,12 @@ class DogsListViewModel {
     private var dogService: AsyncAwaitDogsService
     //CollectionView
     var reloadCollectionView: (() -> Void)?
-   
-    
     var dogs = Dogs()
-    
     var dogsCellViewModels = [DogCellViewModel]() {
         didSet {
             reloadCollectionView?()
         }
     }
-    
     
     init(dogService: AsyncAwaitDogsService = WebService()) {
         self.dogService = dogService
@@ -28,23 +22,18 @@ class DogsListViewModel {
     
     func getDogsBreeds()  async {
         do {
-         let dogData =    try  await dogService.fetchDogsBreed()
+            let dogData =    try  await dogService.fetchDogsBreed()
             self.fetchDogs(dogsData: dogData ?? [])
         } catch {
-           print(error)
+            print(error)
         }
-   
+        
     }
     
     
     func fetchDogs (dogsData :Dogs){
         self.dogs = dogsData
-        var vms = [DogCellViewModel]()
-        for dog in dogsData {
-            vms.append(createDogCellModel(dog: dog))
-        }
-        dogsCellViewModels = vms
-        print(dogsCellViewModels)
+        dogsCellViewModels = dogsData.map {dog in createDogCellModel(dog: dog)}
     }
     
     
@@ -55,8 +44,8 @@ class DogsListViewModel {
         return DogCellViewModel(name: name, id: id, url: imageUrl)
     }
     
- 
+    
     func getDogCellViewModel(at indexPath: IndexPath) -> DogCellViewModel {
         return dogsCellViewModels[indexPath.row]
     }
-    }
+}

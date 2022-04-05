@@ -14,7 +14,6 @@ class DogAttributesTests: XCTestCase {
     
     override func setUp() {
           super.setUp()
-          
           let storyboard = UIStoryboard(name: "Main", bundle: nil)
           self.viewControllerUnderTest = storyboard.instantiateViewController(withIdentifier: "DogAttributesTableViewController") as? DogAttributesTableViewController
           self.viewControllerUnderTest.loadView()
@@ -60,7 +59,7 @@ class DogAttributesTests: XCTestCase {
 
       func testTableCellHasCorrectLabelText() {
           let cell0 = viewControllerUnderTest.tableView(viewControllerUnderTest.tableView, cellForRowAt: [35]) as? AttributesTableViewCell
-          XCTAssertEqual(cell0?.bredForLabel.text, "one")
+          XCTAssertEqual(cell0?.lifeSpanLabel.text, "one")
           
           let cell1 = viewControllerUnderTest.tableView(viewControllerUnderTest.tableView, cellForRowAt: [0,4]) as? AttributesTableViewCell
           XCTAssertEqual(cell1?.lifeSpanLabel.text, "two")

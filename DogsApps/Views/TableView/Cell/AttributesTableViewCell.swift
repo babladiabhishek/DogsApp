@@ -12,36 +12,28 @@ class AttributesTableViewCell: UITableViewCell {
     @IBOutlet weak var lifeSpanLabel: UILabel!
     @IBOutlet weak var tempramentLabel: UILabel!
     
-    var cellViewModel: AttributesCellViewModel? {
-        didSet{
-          updateLabel()
-        }
-    }
-    
-//    class var identifier: String { return String(describing: self) }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    private func updateLabel(){
-        bredForLabel.text = cellViewModel?.bredFor
-        lifeSpanLabel.text = cellViewModel?.lifeSpan
-        tempramentLabel.text = cellViewModel?.temperament
+    func updateLabel(cellViewModel: AttributesCellViewModel){
+        bredForLabel.text = cellViewModel.bredFor
+        lifeSpanLabel.text = cellViewModel.lifeSpan
+        tempramentLabel.text = cellViewModel.temperament
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         bredForLabel.text = nil
         lifeSpanLabel.text = nil
         tempramentLabel.text = nil
     }
-
+    
 }
