@@ -21,14 +21,14 @@ struct Dog: Codable {
     
     
     enum CodingKeys: String, CodingKey {
-            case id, name, image,temperament
-            case bredFor = "bred_for"
-            case lifeSpan = "life_span"
+        case id, name, image,temperament
+        case bredFor = "bred_for"
+        case lifeSpan = "life_span"
     }
 }
 
-struct Image : Codable {
-    let url : String
+struct Image: Codable {
+    let url: String
 }
 
 

@@ -47,5 +47,5 @@ class DogsListViewModel {
     
     func getDogCellViewModel(at indexPath: IndexPath) -> DogCellViewModel {
         return dogsCellViewModels[indexPath.row]
-    }
+}
 }

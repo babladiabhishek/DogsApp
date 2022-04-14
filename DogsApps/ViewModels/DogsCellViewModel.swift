@@ -7,7 +7,7 @@
 
 import Foundation
 struct DogCellViewModel {
-    var name : String
-    var id : Int
-    var url:String
+    var name: String
+    var id: Int
+    var url: String
 }

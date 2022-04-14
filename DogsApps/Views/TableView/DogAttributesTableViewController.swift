@@ -50,14 +50,13 @@ extension DogAttributesTableViewController:UITableViewDelegate,UITableViewDataSo
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = Constants.ReuseIdentifiers.tableViewIdentifier
-        guard  let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? AttributesTableViewCell else {return fatalError("some error") as! UITableViewCell}
         //         Configure the cell...
-        
-        let cellVM = viewModel.getAttributesCellViewModel(at: id)
-        cell.updateLabel(cellViewModel: cellVM)
-        return cell
+            let identifier = Constants.ReuseIdentifiers.tableViewIdentifier
+            let attributesCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            if let cell = attributesCell as? AttributesTableViewCell  {
+            let cellVM = viewModel.getAttributesCellViewModel(at: id)
+            cell.updateLabel(cellViewModel: cellVM)
+            return cell
+        } else {return fatalError("some error") as! UITableViewCell}
     }
-    
-    
 }

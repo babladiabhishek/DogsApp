@@ -55,11 +55,19 @@ extension DogsCollectionViewController:UICollectionViewDelegate,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard  let cell = collectionView.dequeueReusableCell(withReuseIdentifier:Constants.ReuseIdentifiers.collectionViewIdentifier , for: indexPath) as? DogCollectionViewCell else {return (fatalError("Some error") as! UICollectionViewCell)}
+        let identifier = Constants.ReuseIdentifiers.collectionViewIdentifier
+        let dogCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         
-        let cellVM = viewModel.getDogCellViewModel(at: indexPath)
-        cell.updateLabel(cellViewModel: cellVM)
-        return cell
+        if let cell = dogCell as? DogCollectionViewCell {
+            let cellVM = viewModel.getDogCellViewModel(at: indexPath)
+            cell.updateLabel(cellViewModel: cellVM)
+            return cell
+        } else {
+            return fatalError("Some error") as! UICollectionViewCell
+        }
+        
+        
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
