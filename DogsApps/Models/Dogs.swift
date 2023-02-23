@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 typealias Dogs = [Dog]
 
 // MARK: - Dog
@@ -18,10 +17,9 @@ struct Dog: Codable {
     let bredFor: String?
     let lifeSpan: String
     let temperament: String?
-    
-    
+
     enum CodingKeys: String, CodingKey {
-        case id, name, image,temperament
+        case id, name, image, temperament
         case bredFor = "bred_for"
         case lifeSpan = "life_span"
     }
@@ -30,9 +28,3 @@ struct Dog: Codable {
 struct Image: Codable {
     let url: String
 }
-
-
-
-
-
-

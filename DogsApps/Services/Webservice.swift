@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol AsyncAwaitDogsService{
+protocol AsyncAwaitDogsService {
   func fetchDogsBreed() async throws -> Dogs?
 }
 
-class WebService:AsyncAwaitDogsService {
+class WebService: AsyncAwaitDogsService {
   func fetchDogsBreed() async throws -> Dogs? {
     guard let urlString = URL(string: Constants.Urls.dogsBreedUrl) else { return [] }
-    let (data,_) =  try await URLSession.shared.data(from: urlString)
+    let (data, _) =  try await URLSession.shared.data(from: urlString)
     guard let dogs = try? JSONDecoder().decode(Dogs.self, from: data) else {return []}
     return dogs
   }
-  
+
 }

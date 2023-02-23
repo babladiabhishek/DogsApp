@@ -6,8 +6,8 @@
 //
 
 import Foundation
-struct AttributesCellViewModel{
-    var temperament:String
-    var lifeSpan:String
-    var bredFor:String
+struct AttributesCellViewModel {
+    var temperament: String
+    var lifeSpan: String
+    var bredFor: String
 }

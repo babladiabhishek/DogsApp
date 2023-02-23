@@ -9,9 +9,9 @@ import XCTest
 @testable import DogsApps
 
 class DogsAppsTests: XCTestCase {
-    
+
     var viewControllerUnderTest: DogsCollectionViewController!
-    
+
 //    let mockData = DogCellViewModel(name: "rottiwiler", id: 1, url: "skdkdkk.com", temperament: "nil", lifeSpan: "nil", bredFor: "nil")
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,7 +27,7 @@ class DogsAppsTests: XCTestCase {
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-       
+
     }
 
     func testPerformanceExample() throws {
@@ -47,44 +47,44 @@ class DogsAppsTests: XCTestCase {
         viewControllerUnderTest.setupView()
         viewControllerUnderTest.initDogListViewModel()
     }
-    
-    func testHasCollectionView(){
+
+    func testHasCollectionView() {
         XCTAssertNotNil(self.viewControllerUnderTest.collectionView)
     }
-    
-    func testHasCollectionViewDelegate(){
+
+    func testHasCollectionViewDelegate() {
         XCTAssertNotNil(self.viewControllerUnderTest.collectionView?.delegate)
     }
-    
-    func testSuiteHasCollectionViewDataSource(){
+
+    func testSuiteHasCollectionViewDataSource() {
         XCTAssertNotNil(self.viewControllerUnderTest.collectionView?.dataSource)
     }
-    
-    func testTableViewConformstoDataSourceProtocol(){
+
+    func testTableViewConformstoDataSourceProtocol() {
         XCTAssertTrue(viewControllerUnderTest.conforms(to: UICollectionViewDataSource.self))
         XCTAssertTrue(viewControllerUnderTest.conforms(to: UICollectionViewDelegate.self))
-       
+
         XCTAssertTrue(viewControllerUnderTest.responds(to: #selector(viewControllerUnderTest.collectionView(_:didSelectItemAt:))))
         XCTAssertTrue(viewControllerUnderTest.responds(to: #selector(viewControllerUnderTest.collectionView(_:cellForItemAt:))))
     }
-    
+
     func testCollectionViewCellHasReuseIdentifier() {
         let cell = viewControllerUnderTest.collectionView(viewControllerUnderTest.collectionView.unsafelyUnwrapped, cellForItemAt: IndexPath(row: 0, section: 0)) as? DogCollectionViewCell
         let actualReuseIdentifier = cell?.reuseIdentifier
         let expectedIdentifier = "cell"
         XCTAssertEqual(actualReuseIdentifier, expectedIdentifier)
     }
-    
-    func testCollectionViewHasProperItems(){
+
+    func testCollectionViewHasProperItems() {
         let cell = viewControllerUnderTest.collectionView(viewControllerUnderTest.collectionView ?? UICollectionView(), cellForItemAt: IndexPath(row: 1, section: 0)) as? DogCollectionViewCell
-        
+
         XCTAssertEqual(cell?.breedLabel.text, "Akita")
     }
-    
+
 }
 
-class MockService:AsyncAwaitDogsService{
-    var dogs:Dogs!
+class MockService: AsyncAwaitDogsService {
+    var dogs: Dogs!
 
     func fetchDogsBreed() async throws -> Dogs? {
      let valueOne =  Dog(id: 1, name: "Afghan Hound", image: Image(url: "sample1"), bredFor: nil, lifeSpan: "10 - 14 years", temperament: nil)
@@ -93,6 +93,5 @@ class MockService:AsyncAwaitDogsService{
         dogs.append(valueTwo)
         return dogs
     }
-    
-    
+
 }

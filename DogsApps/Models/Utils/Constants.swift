@@ -16,10 +16,10 @@ struct Constants {
     struct Urls {
         static let dogsBreedUrl: String = "https://api.thedogapi.com/v1/breeds?attach_breed=1"
     }
-    
-    struct ReuseIdentifiers{
-        static let tableViewIdentifier:String  = "Cell"
-        static let collectionViewIdentifier:String = "cell"
+
+    struct ReuseIdentifiers {
+        static let tableViewIdentifier: String  = "Cell"
+        static let collectionViewIdentifier: String = "cell"
     }
-    
+
 }
