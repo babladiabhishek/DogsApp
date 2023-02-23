@@ -10,8 +10,8 @@ opt_in_rules: # some rules are only opt-in
   - colon
   - comma
 included: # paths to include during linting. `--path` is ignored if present.
-  - IOS-Template-UIKIT
-  - IOS-Template-UIKITTests
+  - DogsApps
+  - DogsAppsTests
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - Project/R.generated.swift
