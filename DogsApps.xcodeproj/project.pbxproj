@@ -23,7 +23,6 @@
 		C2C18FF627FB72E8005434C3 /* DogAttributesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C18FF527FB72E8005434C3 /* DogAttributesTests.swift */; };
 		C2D2484027F3BEA400E65C33 /* DogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2483F27F3BEA400E65C33 /* DogCollectionViewCell.swift */; };
 		C2D2484227F3C15B00E65C33 /* DogsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2484127F3C15B00E65C33 /* DogsCollectionViewController.swift */; };
-		C2D2484527F3DE5E00E65C33 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C2D2484427F3DE5E00E65C33 /* Alamofire */; };
 		C2D2484B27F3E06600E65C33 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C2D2484A27F3E06600E65C33 /* Kingfisher */; };
 		C2D2485627F3E10A00E65C33 /* Dogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2485527F3E10A00E65C33 /* Dogs.swift */; };
 		C2D2485927F3E13A00E65C33 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2485827F3E13A00E65C33 /* Webservice.swift */; };
@@ -81,7 +80,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2D2484B27F3E06600E65C33 /* Kingfisher in Frameworks */,
-				C2D2484527F3DE5E00E65C33 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +252,6 @@
 			);
 			name = DogsApps;
 			packageProductDependencies = (
-				C2D2484427F3DE5E00E65C33 /* Alamofire */,
 				C2D2484A27F3E06600E65C33 /* Kingfisher */,
 			);
 			productName = DogsApps;
@@ -754,11 +751,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C2D2484427F3DE5E00E65C33 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2D2484327F3DE5E00E65C33 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		C2D2484A27F3E06600E65C33 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C2D2484927F3E06600E65C33 /* XCRemoteSwiftPackageReference "Kingfisher" */;

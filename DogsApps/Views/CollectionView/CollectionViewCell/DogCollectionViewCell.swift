@@ -12,8 +12,6 @@ class DogCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var breedLabel: UILabel!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

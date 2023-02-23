@@ -85,6 +85,7 @@ class DogsAppsTests: XCTestCase {
 
 class MockService:AsyncAwaitDogsService{
     var dogs:Dogs!
+
     func fetchDogsBreed() async throws -> Dogs? {
      let valueOne =  Dog(id: 1, name: "Afghan Hound", image: Image(url: "sample1"), bredFor: nil, lifeSpan: "10 - 14 years", temperament: nil)
         let valueTwo =  Dog(id: 2, name: "Akita", image: Image(url: "sample1"), bredFor: "Coursing and hunting", lifeSpan: "9 - 14 years", temperament: nil)
